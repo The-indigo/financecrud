@@ -15,16 +15,16 @@
 
 <body>
     <form action="register" method="POST">
-        Username: <input type="text" name="username" /> </br>
-        First Name : <input type="text" name="firstname" /> </br>
-        Last Name : <input type="text" name="lastname" /> </br>
-        Email : <input type="text" name="email" /> </br>
-        Password : <input type="text" name="password" /></br>
-        Password Just To Be Sure : <input type="text" name="repassword" /> </br>
-        Address : <input type="text" name="address" /> </br>
-        City : <input type="text" name="city" /> </br>
-        Phone : <input type="text" name="phone" /> </br>
-        Postal Code : <input type="text" name="postalcode" /> </br>
+        Username: <input type="text" name="username" required /> </br>
+        First Name : <input type="text" name="firstname" required /> </br>
+        Last Name : <input type="text" name="lastname" required /> </br>
+        Email : <input type="email" name="email" required /> </br>
+        Password : <input type="password" name="password" required /></br>
+        Password Just To Be Sure : <input type="password" name="repassword" required /> </br>
+        Address : <input type="text" name="address" required /> </br>
+        City : <input type="text" name="city" required /> </br>
+        Phone : <input type="text" name="phone" required /> </br>
+        Postal Code : <input type="text" name="postalcode" required /> </br>
         <input type="submit" name="Register" />
     </form>
     <a href="/">Login instead</a>

@@ -15,8 +15,8 @@
 
 <body>
     <form action="login" method="POST">
-        Email : <input type="text" name="email" /> </br>
-        Password : <input type="text" name="password" /></br>
+        Email : <input type="text" name="email" required /> </br>
+        Password : <input type="password" name="password" required /></br>
         <input type="submit" name="Login" />
     </form>
     <a href="signup">New here? Register instead</a>
