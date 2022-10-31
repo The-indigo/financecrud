@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <!-- you are calling this url with the post mapping -->
     <form action="/editprofile/${customer.customerId}" method="POST">
         Email : <input type="text" name="email" value="${customer.email}" /> </br>
         Address : <input type="text" name="address" value="${customer.address}" /> </br>

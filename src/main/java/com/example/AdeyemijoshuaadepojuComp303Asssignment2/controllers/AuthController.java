@@ -1,13 +1,18 @@
 package com.example.AdeyemijoshuaadepojuComp303Asssignment2.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.AdeyemijoshuaadepojuComp303Asssignment2.models.Account;
 import com.example.AdeyemijoshuaadepojuComp303Asssignment2.models.Customer;
 import com.example.AdeyemijoshuaadepojuComp303Asssignment2.repositories.*;
 
@@ -16,15 +21,18 @@ public class AuthController {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private AccountRepository accountRepository;
+
     @RequestMapping("/")
     public String home() {
         return "index";
     }
 
-    @RequestMapping("/login")
-    public String toLogin() {
-        return "index";
-    }
+    // @RequestMapping("/login")
+    // public String toLogin() {
+    // return "index";
+    // }
 
     @RequestMapping("/account")
     public String toAccount() {
@@ -37,7 +45,9 @@ public class AuthController {
         Customer request = customerRepository.findByEmail(email);
 
         if (request != null && request.getPassword().equals(password)) {
+            List<Account> accountList = accountRepository.findByCustomerId(request.getCustomerId());
             model.addAttribute("customer", request);
+            model.addAttribute("accountList", accountList);
             return "account";
 
         } else {
@@ -71,7 +81,8 @@ public class AuthController {
 
     }
 
-    @RequestMapping("/editprofile/{customerid}")
+    // get
+    @RequestMapping(value = "/editprofile/{customerid}", method = RequestMethod.GET)
     public String toEdit(@PathVariable(value = "customerid") String customerId, Model model) {
         System.out.println(customerId);
         Customer request = customerRepository.findById(Integer.parseInt(customerId))
@@ -80,12 +91,13 @@ public class AuthController {
         return "editprofile";
     }
 
-    @PostMapping("/editprofile/{customerid}")
+    // post
+    @RequestMapping(value = "/editprofile/{customerid}", method = RequestMethod.POST)
     public String editprofile(@RequestParam("email") String email, @RequestParam("address") String address,
             @RequestParam("city") String city,
             @RequestParam("postalcode") String postalcode, @RequestParam("phone") String phone,
             @PathVariable(value = "customerid") String customerId,
-            Model model) {
+            Model model, RedirectAttributes redirect) {
         Customer request = customerRepository.findById(Integer.parseInt(
                 customerId))
                 .orElseThrow(IllegalArgumentException::new);
@@ -95,8 +107,8 @@ public class AuthController {
                 address,
                 city, postalcode, phone, email);
         Customer newCustomer = customerRepository.save(customer);
-        model.addAttribute("customer", newCustomer);
-        return "account";
+        redirect.addAttribute("customer", newCustomer).addFlashAttribute("customer", newCustomer);
+        return "redirect:/account";
     }
 
 }

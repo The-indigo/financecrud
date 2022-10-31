@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <form action="/addaccount" method="POST">
+    <form action="/addaccount/${customerId}" method="POST">
         <input type="radio" id="savings" name="accounttype" required value="1">
         <label for="savings">Savings</label>
         <input type="radio" id="chequeing" name="accounttype" value="2">

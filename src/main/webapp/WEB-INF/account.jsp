@@ -22,6 +22,20 @@
     <p>${customer.phone}</p>
     <p>${customer.city}</p>
 
+    <h1>Accounts</h1>
+    <c:choose>
+        <c:when test="${!empty accountList}">
+            <c:forEach var="acc" items="${accountList}">
+                <p>${acc.accountNumber}</p>
+                <p>${acc.balance}</p>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <p>You currently have no account opened</p>
+        </c:otherwise>
+    </c:choose>
+
+
     <a href="editprofile/${customer.customerId}">Edit profile</a>
     <a href="addaccount/${customer.customerId}">Add Account</a>
 </body>
