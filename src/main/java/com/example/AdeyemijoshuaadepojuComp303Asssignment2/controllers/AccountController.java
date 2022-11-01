@@ -54,12 +54,12 @@ public class AccountController {
     @GetMapping("/edit/{accountNumber}")
     public String toEditAccount(@PathVariable(value = "accountNumber") String accountNumber,
             Model model) {
-        Account account = accountRepository.findByAccountnumber(Integer.parseInt(accountNumber));
+        Account account = accountRepository.findByAccountNumber(Integer.parseInt(accountNumber));
         model.addAttribute("account", account);
         return "addaccount";
     }
 
-    @PostMapping("/edit/{accountNumber}")
+    @PostMapping("/editaccount/{accountNumber}")
     public String editAccount(@PathVariable(value = "accountNumber") String accountNumber,
             @RequestParam("accounttype") String accountType,
             @RequestParam("balance") String balance,
@@ -80,11 +80,11 @@ public class AccountController {
         return "redirect:/account";
     }
 
-    @PostMapping("/delete/{accountNumber}")
+    @PostMapping("/deleteaccount/{accountNumber}")
     public String deleteAccount(@PathVariable(value = "accountNumber") String accountNumber,
             Model model,
             RedirectAttributes redirect) {
-        Account account = accountRepository.findByAccountnumber(Integer.parseInt(accountNumber));
+        Account account = accountRepository.findByAccountNumber(Integer.parseInt(accountNumber));
         if (account != null) {
             accountRepository.deleteById(Integer.parseInt(accountNumber));
             Customer customer = customerRepository.findById(account.getCustomerId())

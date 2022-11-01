@@ -28,8 +28,10 @@
             <c:forEach var="acc" items="${accountList}">
                 <p>${acc.accountNumber}</p>
                 <p>${acc.balance}</p>
-                <a href="edit/${acc.accountNumber}">Edit</a>
-                <a href="delete/${acc.accountNumber}">Delete</a>
+                <a href="editaccount/${acc.accountNumber}">Edit Account</a>
+                <form action="/deleteaccount/${acc.accountNumber}" method="post">
+                    <button type="submit">Delete Account</button>
+                </form>
             </c:forEach>
         </c:when>
         <c:otherwise>
@@ -39,9 +41,8 @@
 
 
     <a href="editprofile/${customer.customerId}">Edit profile</a>
-    <form action="/delete/${accountNumber}" method="post">
-        <button type="submit">Add Account</button>
-    </form>
+
+    <a href="/addaccount/${customer.customerId}">Add Account</a>
 </body>
 
 </html>

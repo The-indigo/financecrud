@@ -10,5 +10,5 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 
     List<Account> findByCustomerId(int customerId);
 
-    public Account findByAccountnumber(int number);
+    public Account findByAccountNumber(int number);
 }

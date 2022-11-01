@@ -18,6 +18,7 @@
             <c:otherwise>
                 Add an account
             </c:otherwise>
+        </c:choose>
 
     </title>
 </head>
@@ -35,7 +36,7 @@
                 Customer ID : <input type="text" name="customerid" value="${account.customerId}" readonly /> </br>
                 Balance : <input type="text" name="balance" value="${account.balance}" /> </br>
                 Overdraft Limit : <input type="text" name="overdraft" value="${account.overdraftLimit}" /> </br>
-                <input type="submit" name="Edit Account" />
+                <button type="submit" name="Edit Account">Edit Account</button>
             </form>
         </c:when>
         <c:otherwise>
