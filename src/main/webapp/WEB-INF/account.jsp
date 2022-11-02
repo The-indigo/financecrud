@@ -39,14 +39,14 @@
                                 <p>${customer.firstname} ${customer.lastname}</p>
                             </div>
                             <div class="card-chip-div">
-                                <img src="chip.png" title="chip icons" />
+                                <img src="${pageContext.request.contextPath}/resources/images/chip.png" />
                             </div>
 
                             <div class="card-number-img-div">
                                 <p><span class="card-number-span">087 </span> <span class="card-number-span">087 </span>
                                     <span class="card-number-span">087 </span> </p>
                                 <div class="card-img-div">
-                                    <img src="fishing.png" />
+                                    <img src="${pageContext.request.contextPath}/resources/images/fishing.png" />
                                 </div>
                             </div>
 
@@ -57,10 +57,10 @@
                         </aside>
                         <aside class="account-details">
                             <h3>Account details</h3>
-                            <p>Name:${acc.accountNumber}</p>
-                            <p>Account:${acc.balance}</p>
+                            <p>Name: ${acc.accountNumber}</p>
+                            <p>Account Balance: ${acc.balance}</p>
                             <div class="account-details-button">
-                                <a href="editaccount/${acc.accountNumber}">Edit Account</a>
+                                <a href="/edit/${acc.accountNumber}">Edit Account</a>
                                 <form action="/deleteaccount/${acc.accountNumber}" method="post">
                                     <button type="submit">Delete Account</button>
                                 </form>

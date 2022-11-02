@@ -1,6 +1,7 @@
 package com.example.AdeyemijoshuaadepojuComp303Asssignment2.controllers;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,13 +27,18 @@ public class AuthController {
 
     @RequestMapping("/")
     public String home() {
+        int m = (int) Math.pow(10, 9);
+        int randomNumber = m + new Random().nextInt(9 * m);
+        // Random random = new Random();
+        // int randomNumber = random.nextInt(9);
+        System.out.println(randomNumber);
         return "index";
     }
 
-    // @RequestMapping("/login")
-    // public String toLogin() {
-    // return "index";
-    // }
+    @RequestMapping("/error")
+    public String toerrorPage() {
+        return "error";
+    }
 
     @RequestMapping("/account")
     public String toAccount() {
