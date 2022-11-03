@@ -120,7 +120,7 @@
 
                                 <div class="input-div">
                                     <label for="customerid">Customer ID<span class="star">*</span>:</label> </br>
-                                    <input type="text" id="customerid" name="customerid" value="${account.customerId}"
+                                    <input type="text" id="customerid" name="customerid" value="${customerId}"
                                         readonly />
                                 </div>
 

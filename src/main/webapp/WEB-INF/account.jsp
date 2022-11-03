@@ -29,30 +29,41 @@
             <c:when test="${!empty accountList}">
                 <c:forEach var="acc" items="${accountList}">
                     <div class="account-div">
-                        <aside class="account-card">
-                            <div class="card-header">
-                                <div class="logo-text">
-                                    <h1>My Wallet!</h1>
-                                </div>
-                                <p>${customer.firstname} ${customer.lastname}</p>
+                        <c:choose>
+                            <c:when test="${acc.accountTypeCode==1}">
+                                <aside class="account-card savings-account-card">
+                            </c:when>
+                            <c:when test="${acc.accountTypeCode==2}">
+                                <aside class="account-card chequeing-account-card">
+                            </c:when>
+                            <c:when test="${acc.accountTypeCode==3}">
+                                <aside class="account-card premium-account-card">
+                            </c:when>
+                        </c:choose>
+                        <!-- <aside class="account-card"> -->
+                        <div class="card-header">
+                            <div class="logo-text">
+                                <h1>My Wallet!</h1>
                             </div>
-                            <div class="card-chip-div">
-                                <img src="${pageContext.request.contextPath}/resources/images/chip.png" />
-                            </div>
+                            <p>${customer.firstname} ${customer.lastname}</p>
+                        </div>
+                        <div class="card-chip-div">
+                            <img src="${pageContext.request.contextPath}/resources/images/chip.png" />
+                        </div>
 
-                            <div class="card-number-img-div">
-                                <c:set var="myVar">${acc.accountNumber}</c:set>
-                                <p><span class="card-number-span">${fn:substring(myVar, 0,3)} </span> <span
-                                        class="card-number-span">${fn:substring(myVar, 3,6)} </span>
-                                    <span class="card-number-span">${fn:substring(myVar, 6,11)} </span> </p>
-                                <div class="card-img-div">
-                                    <img src="${pageContext.request.contextPath}/resources/images/fishing.png" />
-                                </div>
+                        <div class="card-number-img-div">
+                            <c:set var="myVar">${acc.accountNumber}</c:set>
+                            <p><span class="card-number-span">${fn:substring(myVar, 0,3)} </span> <span
+                                    class="card-number-span">${fn:substring(myVar, 3,6)} </span>
+                                <span class="card-number-span">${fn:substring(myVar, 6,11)} </span> </p>
+                            <div class="card-img-div">
+                                <img src="${pageContext.request.contextPath}/resources/images/fishing.png" />
                             </div>
+                        </div>
 
-                            <div class="card-expiry">
-                                <p>10/12</p>
-                            </div>
+                        <div class="card-expiry">
+                            <p>10/12</p>
+                        </div>
 
                         </aside>
                         <aside class="account-details">
