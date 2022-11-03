@@ -23,8 +23,13 @@
 
  .main {
      text-align: center;
-     margin-top: 2rem;
+     margin-top: .7rem;
 
+ }
+
+ .logo-text {
+     margin-top: 7px;
+     margin-left: 16px;
  }
 
  .profile-p {
