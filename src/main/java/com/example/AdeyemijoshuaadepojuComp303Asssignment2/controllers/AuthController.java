@@ -113,8 +113,16 @@ public class AuthController {
                 request.getLastname(),
                 address,
                 city, postalcode, phone, email);
+
         Customer newCustomer = customerRepository.save(customer);
-        redirect.addAttribute("customer", newCustomer).addFlashAttribute("customer", newCustomer);
+
+        List<Account> accountList = accountRepository.findByCustomerId(Integer.parseInt(customerId));
+        redirect.addAttribute("", "").addFlashAttribute("accountList", accountList)
+                .addFlashAttribute("customer",
+                        newCustomer);
+
+        // redirect.addAttribute("customer", newCustomer).addFlashAttribute("customer",
+        // newCustomer);
         return "redirect:/account";
     }
 

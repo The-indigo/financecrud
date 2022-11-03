@@ -18,7 +18,9 @@
 </head>
 
 <body>
-
+    <div class="logo-text">
+        <h1>My Wallet!</h1>
+    </div>
     <main class="main">
 
         <h1>Welcome To Your profile</h1>
