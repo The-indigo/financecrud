@@ -45,13 +45,10 @@ public class AuthController {
     public String login(@RequestParam("email") String email,
             @RequestParam("password") String password, Model model) {
         Customer request = customerRepository.findByEmail(email);
-
+        // TODO:Add decryption method for password(Bcrypt)
         if (request != null && request.getPassword().equals(password)) {
             List<Account> accountList = accountRepository.findByCustomerId(request.getCustomerId());
-            // List<String> numbersStringList = new ArrayList<String>();
-            // accountList.forEach((Account accountNumber) -> {
-            // numbersStringList.add(String.valueOf(accountNumber.getAccountNumber()));
-            // });
+
             model.addAttribute("customer", request);
             model.addAttribute("accountList", accountList);
             // model.addAttribute("accountNumberString", numbersStringList);
@@ -75,6 +72,8 @@ public class AuthController {
             @RequestParam("lastname") String lastname, @RequestParam("city") String city,
             @RequestParam("postalcode") String postalcode, @RequestParam("phone") String phone,
             @RequestParam("repassword") String repassword) {
+        // TODO:Add encryption method for password(Bcrypt)
+
         Customer request = customerRepository.findByEmail(email);
         if (request == null && repassword.equals(password)) {
             Customer customer = new Customer(username, password, firstname, lastname, address,
