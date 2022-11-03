@@ -52,10 +52,23 @@
      font-size: 1.5rem;
  }
 
+ .chequeing-account-card {
+     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 0%, rgba(199, 45, 45, 1) 0%, rgba(149, 42, 45, 1) 0%, rgba(95, 46, 121, 1) 79%);
+     ;
+ }
+
+ .premium-account-card {
+     background: linear-gradient(90deg, rgba(0, 212, 255, 1) 0%, rgba(199, 45, 45, 1) 0%, rgba(0, 0, 0, 1) 0%, rgba(54, 52, 55, 1) 0%, rgba(11, 11, 11, 1) 100%);
+ }
+
+ .savings-account-card {
+     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 0%, rgba(14, 93, 145, 1) 99%);
+
+ }
+
  .account-card {
      background-size: 8rem;
      background-repeat: no-repeat;
-     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 0%, rgba(14, 93, 145, 1) 99%);
      width: 30%;
      border-radius: 10px;
      padding: .4rem 1rem 1.8rem 1rem;
@@ -98,6 +111,7 @@
      justify-content: space-evenly;
      color: white;
      z-index: 2;
+     opacity: 0.6;
 
  }
 

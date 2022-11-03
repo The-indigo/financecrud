@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,10 +23,6 @@
 
         <h1>Welcome To Your profile</h1>
         <p class="profile-p">${customer.firstname}</p>
-        <p class="profile-p">${customer.email}</p>
-        <p class="profile-p">${customer.lastname}</p>
-        <p class="profile-p">${customer.phone}</p>
-        <p class="profile-p">${customer.city}</p>
 
         <h1 class="accounts-h1">Accounts</h1>
         <c:choose>
@@ -43,8 +41,10 @@
                             </div>
 
                             <div class="card-number-img-div">
-                                <p><span class="card-number-span">087 </span> <span class="card-number-span">087 </span>
-                                    <span class="card-number-span">087 </span> </p>
+                                <c:set var="myVar">${acc.accountNumber}</c:set>
+                                <p><span class="card-number-span">${fn:substring(myVar, 0,3)} </span> <span
+                                        class="card-number-span">${fn:substring(myVar, 3,6)} </span>
+                                    <span class="card-number-span">${fn:substring(myVar, 6,11)} </span> </p>
                                 <div class="card-img-div">
                                     <img src="${pageContext.request.contextPath}/resources/images/fishing.png" />
                                 </div>
@@ -57,7 +57,17 @@
                         </aside>
                         <aside class="account-details">
                             <h3>Account details</h3>
-                            <p>Name: ${acc.accountNumber}</p>
+                            <c:choose>
+                                <c:when test="${acc.accountTypeCode==1}">
+                                    <p>Type: Savings Account</p>
+                                </c:when>
+                                <c:when test="${acc.accountTypeCode==2}">
+                                    <p>Type: Chequeing Account</p>
+                                </c:when>
+                                <c:when test="${acc.accountTypeCode==3}">
+                                    <p>Type: Premium Account</p>
+                                </c:when>
+                            </c:choose>
                             <p>Account Balance: ${acc.balance}</p>
                             <div class="account-details-button">
                                 <a href="/edit/${acc.accountNumber}">Edit Account</a>

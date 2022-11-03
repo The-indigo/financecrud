@@ -1,7 +1,8 @@
 package com.example.AdeyemijoshuaadepojuComp303Asssignment2.controllers;
 
+// import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+// import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,18 +28,13 @@ public class AuthController {
 
     @RequestMapping("/")
     public String home() {
-        int m = (int) Math.pow(10, 9);
-        int randomNumber = m + new Random().nextInt(9 * m);
-        // Random random = new Random();
-        // int randomNumber = random.nextInt(9);
-        System.out.println(randomNumber);
         return "index";
     }
 
-    @RequestMapping("/error")
-    public String toerrorPage() {
-        return "error";
-    }
+    // @RequestMapping("/error")
+    // public String toerrorPage() {
+    // return "error";
+    // }
 
     @RequestMapping("/account")
     public String toAccount() {
@@ -52,8 +48,13 @@ public class AuthController {
 
         if (request != null && request.getPassword().equals(password)) {
             List<Account> accountList = accountRepository.findByCustomerId(request.getCustomerId());
+            // List<String> numbersStringList = new ArrayList<String>();
+            // accountList.forEach((Account accountNumber) -> {
+            // numbersStringList.add(String.valueOf(accountNumber.getAccountNumber()));
+            // });
             model.addAttribute("customer", request);
             model.addAttribute("accountList", accountList);
+            // model.addAttribute("accountNumberString", numbersStringList);
             return "account";
 
         } else {
