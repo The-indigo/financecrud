@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Quicksand:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/account.css" rel="stylesheet" />
-    <title>Welcome, {customer.username}</title>
+    <title>Welcome, ${customer.username}</title>
 </head>
 
 <body>
