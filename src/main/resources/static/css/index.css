@@ -28,6 +28,10 @@
      display: flex;
  }
 
+ .error {
+     color: rgb(95, 39, 39);
+ }
+
  .left-area {
      padding: 7px 16px;
 

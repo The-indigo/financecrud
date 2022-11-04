@@ -44,8 +44,12 @@ public class AuthController {
     @PostMapping("/login")
     public String login(@RequestParam("email") String email,
             @RequestParam("password") String password, Model model) {
-        Customer request = customerRepository.findByEmail(email);
+        var request = customerRepository.findByEmail(email);
         // TODO:Add decryption method for password(Bcrypt)
+        if (request == null) {
+            model.addAttribute("error", "Invalid credentials");
+            return "index";
+        }
         if (request != null && request.getPassword().equals(password)) {
             List<Account> accountList = accountRepository.findByCustomerId(request.getCustomerId());
 
@@ -55,7 +59,8 @@ public class AuthController {
             return "account";
 
         } else {
-            return "login";
+            model.addAttribute("error", "Invalid credentials");
+            return "index";
         }
 
     }
@@ -71,16 +76,21 @@ public class AuthController {
             @RequestParam("address") String address, @RequestParam("firstname") String firstname,
             @RequestParam("lastname") String lastname, @RequestParam("city") String city,
             @RequestParam("postalcode") String postalcode, @RequestParam("phone") String phone,
-            @RequestParam("repassword") String repassword) {
+            @RequestParam("repassword") String repassword, Model model) {
         // TODO:Add encryption method for password(Bcrypt)
 
         Customer request = customerRepository.findByEmail(email);
+        if (request != null) {
+            model.addAttribute("error", "A user with this email already exist");
+            return "register";
+        }
         if (request == null && repassword.equals(password)) {
             Customer customer = new Customer(username, password, firstname, lastname, address,
                     city, postalcode, phone, email);
             customerRepository.save(customer);
-            return "login";
+            return "index";
         } else {
+            model.addAttribute("error", "Please recheck your password");
             return "register";
 
         }

@@ -44,6 +44,12 @@
                 </div>
                 <div class="form">
                     <form action="login" method="POST">
+
+                        <c:if test="${error!=null}">
+                            <p class="error">${error}</p>
+                        </c:if>
+
+
                         <div class="input-div">
                             <label for="email">Email<span class="star">*</span>:</label> </br>
                             <input type="text" id="email" name="email" required />

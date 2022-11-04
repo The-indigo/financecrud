@@ -42,6 +42,10 @@
                 </div>
                 <div class="form">
                     <form action="register" method="POST">
+                        <c:if test="${error!=null}">
+                            <p class="error">${error}</p>
+                        </c:if>
+
                         <div class="form-div">
                             <div class="form-div-1">
                                 <div class="input-div">
